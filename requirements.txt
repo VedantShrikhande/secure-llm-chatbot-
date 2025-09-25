@@ -1,0 +1,11 @@
+streamlit
+transformers
+torch
+scikit-learn
+pandas
+numpy
+nltk
+datasets
+joblib
+regex
+python-dotenv
