@@ -10,8 +10,8 @@ import os
 
 # === Load Dataset ===
 # Adjust paths if needed (your Kaggle CSVs should be in data/)
-entries_path = "data/2020-12-31-DynamicallyGeneratedHateDataset-entries-v0.1.csv"
-targets_path = "data/2020-12-31-DynamicallyGeneratedHateDataset-targets-v0.1.csv"
+entries_path = "data/entries.csv"
+targets_path = "data/targets.csv"
 
 entries = pd.read_csv(entries_path)
 targets = pd.read_csv(targets_path)
