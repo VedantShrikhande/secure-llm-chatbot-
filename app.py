@@ -27,16 +27,43 @@ with st.form('input_form', clear_on_submit=True):
     submitted = st.form_submit_button('Send')
 
 # Process user input
+
+# Placeholder definitions for demonstration purposes
+submitted = True  # Assume the form is submitted for demonstration
+user_input = "This is a test message." # Assume some user input
+
+# Placeholder for a bot object with a chat method
+class MockBot:
+    def chat(self, text):
+        # Simple mock response - replace with actual bot logic
+        if "hate" in text.lower():
+            return "This message seems to contain hate speech.", "Hate Speech"
+        else:
+            return "Thank you for your message.", None
+
+bot = MockBot()
+
+# Use a regular dictionary to simulate session state in the notebook
+session_state = {}
+
+# Initialize conversation history
+if 'conversation' not in session_state:
+    session_state['conversation'] = []
+
+
 if submitted and user_input.strip():
     # Get bot response
     response, blocked_reason = bot.chat(user_input)
 
     # Save conversation
-    st.session_state['conversation'].append(("You", user_input))
+    session_state['conversation'].append(("You", user_input))
     if blocked_reason:
-        st.session_state['conversation'].append(("Bot (Filtered)", response + f"[Blocked: {blocked_reason}]"))
+        session_state['conversation'].append(("Bot (Filtered)", response + f" ⚠️ [Blocked: {blocked_reason}]"))
     else:
-        st.session_state['conversation'].append(("Bot", response))
+        session_state['conversation'].append(("Bot", response))
+
+# Display the conversation state for demonstration
+print(session_state['conversation'])
 
 # Display conversation
 for speaker, text in st.session_state['conversation']:
