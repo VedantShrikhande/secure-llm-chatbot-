@@ -8,7 +8,7 @@ from backend.chatbot import SafeChatbot
 st.set_page_config(page_title='Secure LLM Chatbot', layout='centered')
 
 # Title and description
-st.title('🔒 Secure LLM Chatbot')
+st.title('Secure LLM Chatbot')
 st.write('A demo chatbot that filters PII and hate/bias content before replying.')
 
 # Initialize chatbot
@@ -34,7 +34,7 @@ if submitted and user_input.strip():
     # Save conversation
     st.session_state['conversation'].append(("You", user_input))
     if blocked_reason:
-        st.session_state['conversation'].append(("Bot (Filtered)", response + f" ⚠️ [Blocked: {blocked_reason}]"))
+        st.session_state['conversation'].append(("Bot (Filtered)", response + f"[Blocked: {blocked_reason}]"))
     else:
         st.session_state['conversation'].append(("Bot", response))
 
